@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">鱼雁手字</string>
+    <string name="action_settings">设置</string>
+    <string name="action_add">添加</string>
+    <string name="action_practice">练习</string>
+
+    <string name="action_update">更新</string>
+    <string name="action_delete">删除</string>
+    <string name="action_upgrade">更新</string>
+    <string name="action_upload">备份云端</string>
+    <string name="action_speeking">语音设置</string>
+    <string name="updatecontent">1.修复BUG\n2.优化界面\n3.向天空大声的呼喊说声\n4.欢迎大家Star和提issue</string>
+    <string name="versionchecklib_progress">进度:</string>
+    <string name="versionchecklib_confirm">确认</string>
+    <string name="versionchecklib_cancel">取消</string>
+    <string name="versionchecklib_retry">重试</string>
+
+    <string name="soft_update_no">已经是最新版本</string>
+    <string name="soft_update_title">软件更新</string>
+    <string name="soft_update_info">检测到新版本是否立即更新？\n当前联系人数据不会丢失</string>
+    <string name="soft_update_info2">检测到新版本是否立即更新？\n</string>
+    <string name="soft_update_info1">检测有数据更新是否立即更新？</string>
+    <string name="soft_update_updatebtn">更新</string>
+    <string name="soft_update_later">稍后更新</string>
+    <string name="soft_updating">正在更新</string>
+    <string name="soft_update_cancel">取消</string>
+
+</resources>
