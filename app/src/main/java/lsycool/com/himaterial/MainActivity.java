@@ -66,6 +66,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import lsycool.com.mailsender.SimpleMailSender;
 import lsycool.com.update.UpdateManager;
 
 
@@ -426,6 +427,16 @@ public class MainActivity extends AppCompatActivity implements ObservableScrollV
                     String path = this.getFilesDir().getParent();// "/data/data/com.lsy.namespace";
                     String mSavePath = path + "/storys.db3";
                     manager.uploadFiles(mSavePath, "http://www.lsycool.cn/personal/upload.php");
+                }
+                break;
+            case R.id.action_sendmail:
+
+                if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+                    // 获得存储卡的路径
+                    String path = this.getFilesDir().getParent();// "/data/data/com.lsy.namespace";
+                    String mSavePath = path + "/storys.db3";
+                    MailSender sender = new MailSender(mSavePath);
+                    sender.start();
                 }
                 break;
             case R.id.action_speeking:
@@ -1083,6 +1094,30 @@ public class MainActivity extends AppCompatActivity implements ObservableScrollV
                 ActivityCompat.requestPermissions(context, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
                         Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
 
+            }
+        }
+    }
+
+    private class MailSender extends Thread {
+        private String attachment;
+
+        public MailSender(String attachment) {
+            this.attachment = attachment;
+        }
+        @Override
+        public void run() {
+            try {
+                // 这个类主要来发送邮件
+                showTip("preparing data..");
+                SimpleMailSender sms = new SimpleMailSender("dats", "datc");
+//				if(sms.sendTextMail(mailInfo,getBaseContext().getFilesDir().getParent() + "/mydatabase.db")){//有附件
+                if(sms.sendTextMail(attachment)){//无附件
+                    showTip("send mail successfully.");
+                }else{
+                    showTip("send mail failed.");
+                }
+            } catch (Exception e) {
+                Log.e("SendMail", e.getMessage(), e);
             }
         }
     }
